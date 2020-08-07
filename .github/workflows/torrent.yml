@@ -19,11 +19,11 @@ jobs:
       - name: Install mktorrent
         run: sudo apt-get install mktorrent
         
-      - name: Download game
+      - name: Download file
         run: wget -nv $pkg_url
         
-      - name: Make torrent using mktorrent
-        run: mktorrent -c "$comment" -l $piece_size -o "$output" -w "$pkg_url" $file_name
+      - name: Create torrent using mktorrent
+        run: mktorrent -c "$comment" -l $piece_size -o "$output" -w "$url" $file_name
         
       - name: Upload torrent file
         uses: actions/upload-artifact@v2
