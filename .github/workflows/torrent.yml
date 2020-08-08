@@ -10,7 +10,6 @@ env:
   url: https://cdn.stubdownloader.services.mozilla.com/builds/firefox-latest-ssl/en-US/win64/882b427c3e945e68fcb025a5b0a0262f84e9c90c8a5d36a978e7e6130f4ef275/Firefox%20Setup%2079.0.exe
   file_name: "Firefox Setup 79.0.exe"
   piece_size: 19 # Check the Wiki for recommended piece size
-  output: "Firefox Setup 79.0.torrent"
       
 jobs:
   create:
@@ -20,13 +19,13 @@ jobs:
         run: sudo apt-get install mktorrent
         
       - name: Download file
-        run: wget -nv $pkg_url
+        run: wget -nv -O "$file_name" "$url"
         
       - name: Create torrent using mktorrent
-        run: mktorrent -c "$comment" -l $piece_size -o "$output" -w "$url" $file_name
+        run: mktorrent -c "$comment" -l $piece_size -o "${name}.torrent" -w "$url" "$file_name"
         
       - name: Upload torrent file
         uses: actions/upload-artifact@v2
         with:
           name: ${{ env.name }}
-          path: ${{ env.output }}
+          path: ${{ env.name }}.torrent
