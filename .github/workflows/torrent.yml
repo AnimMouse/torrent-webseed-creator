@@ -5,11 +5,11 @@ on:
       - master
       
 env:
-  name: "Firefox Setup 79.0"
-  comment: "Firefox Setup 79.0"
-  url: https://cdn.stubdownloader.services.mozilla.com/builds/firefox-latest-ssl/en-US/win64/882b427c3e945e68fcb025a5b0a0262f84e9c90c8a5d36a978e7e6130f4ef275/Firefox%20Setup%2079.0.exe
-  file_name: "Firefox Setup 79.0.exe"
-  piece_size: 19 # Check the README.md for recommended piece size
+  name: "Unity-Samples-Techno-Megapack.zip"
+  comment: "Unity-Samples-Techno-Megapack.zip"
+  url: https://3.prefil.es/files/6/6h5osati7w2uqq/Unity-Samples-Techno-Megapack.zip
+  file_name: "Unity-Samples-Techno-Megapack.zip"
+  piece_size: 21
       
 jobs:
   create:
