@@ -12,7 +12,7 @@ Your file is then burned into a torrent.
 ## How to use
 1. Create a repository on GitHub using this template.
 
-2. Open the torrent.yml file on the .github folder.
+2. Open the torrent.yml file on the .github/workflows folder.
 
 3. Edit the environment variables inside the yaml file.
 
@@ -24,9 +24,9 @@ URL: The URL of the file to download and create a torrent from.
 
 File name: The file name of the file you will create a torrent from.
 
-Piece size: The size of the torrent pieces in potency of 2 (2^n)
+Piece size: The size of the torrent pieces in potency of 2 (2^n).
 
-4. Push it to your repository
+4. Push it to your repository.
 
 5. Wait for it to finish downloading and hashing.
 
