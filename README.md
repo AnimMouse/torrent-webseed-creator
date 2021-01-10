@@ -5,12 +5,14 @@ Inspired by [BurnBit †](https://web.archive.org/web/20160304022643/http://burn
 
 Powered by [mktorrent](https://github.com/Rudde/mktorrent) to create a torrent file.
 
+An alternative to BurnBit and URLHash.
+
 Convert direct HTTP link to .torrent
 
 Your file is then burned into a torrent.
 
 ## How to use
-1. Create a repository on GitHub using this template.
+1. Create a repository on GitHub using this template by clicking "Use this template."
 
 2. Open the torrent.yml file on the .github/workflows folder.
 
@@ -26,7 +28,7 @@ File name: The file name of the file you will create a torrent from.
 
 Piece size: The size of the torrent pieces in potency of 2 (2^n).
 
-4. Push it to your repository.
+4. Push it/commit it to your repository.
 
 5. Wait for it to finish downloading and hashing.
 
@@ -55,3 +57,6 @@ Piece size: The size of the torrent pieces in potency of 2 (2^n).
 2^25 = 33 554 432 = 32768 KiB (note that utorrent versions before 3.x CANNOT load torrents with this or higher piece-size)
 
 Source: [Seedboxes.cc](https://seedboxes.helpjuice.com/How-to/128173-how-to-create-a-torrent-via-the-command-line)
+
+## Difference on Google Colaboratory version
+This GitHub Actions version of this program has a soft limit of ≈25 GB, the [Google Colaboratory](https://github.com/AnimMouse/torrent-webseed-creator-colab) version has a soft limit of ≈358.27 GB.
