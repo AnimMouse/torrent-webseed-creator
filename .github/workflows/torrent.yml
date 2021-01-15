@@ -5,10 +5,10 @@ on:
       - ".github/workflows/torrent.yml"
       
 env:
-  name: "konusanlars2b3"
-  comment: "konusanlars2b3 "
-  url: "https://bot1.telegramfiles.ga/5828633489806088/KonusanlarS2B3pikniktube.mkv"
-  file_name: "konusanlars2b3"
+  name: "SokaginCocuklariS2B6"
+  comment: "SokaginCocuklariS2B6"
+  url: "https://telegramfiles.herokuapp.com/download/5585508425/slckvd_3813.mp4"
+  file_name: "SokaginCocuklariS2B6.mp4"
   piece_size: 19 # Check the README.md for recommended piece size
       
 jobs:
