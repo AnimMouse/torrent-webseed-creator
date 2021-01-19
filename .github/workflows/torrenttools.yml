@@ -1,0 +1,35 @@
+name: Create torrent using torrenttools
+on:
+  push:
+    paths:
+      - ".github/workflows/torrenttools.yml"
+      
+env:
+  name: "Firefox Setup 84.0.2"
+  comment: "Firefox Setup 84.0.2 by torrent-webseed-creator"
+  url: "https://cdn.stubdownloader.services.mozilla.com/builds/firefox-latest-ssl/en-US/win64/d64376e289766ce61f2d99579fb331af3b53619bcbff418513c944eb3aab6fa5/Firefox%20Setup%2084.0.2.exe"
+  file_name: "Firefox Setup 84.0.2.exe"
+  piece_size: auto # auto for automatic calculation, or use the recommended piece size on the README.md file
+  protocol_version: 1 # BitTorrent version 1, 2 or hybrid
+      
+jobs:
+  create:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Install torrenttools
+        run: |
+          sudo add-apt-repository ppa:fbdtemme/torrenttools
+          sudo apt-get update
+          sudo apt-get install torrenttools
+        
+      - name: Download file
+        run: wget -nv -O "$file_name" "$url"
+        
+      - name: Create torrent using torrenttools
+        run: torrenttools create -v $protocol_version -o "${name}.torrent" -w "$url" -c "$comment" -l $piece_size "$file_name" # Tested on v0.1.2
+        
+      - name: Upload torrent file
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ env.name }}
+          path: ${{ env.name }}.torrent
