@@ -1,8 +1,8 @@
-name: Create torrent
+name: Create torrent using mktorrent
 on:
   push:
     paths:
-      - ".github/workflows/torrent.yml"
+      - ".github/workflows/mktorrent.yml"
       
 env:
   name: "Firefox Setup 84.0.2"
