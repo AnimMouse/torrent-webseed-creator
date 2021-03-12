@@ -4,7 +4,7 @@ Webseeded Torrent Creator using GitHub Actions.
 Inspired by [BurnBit †](https://web.archive.org/web/20160304022643/http://burnbit.com/) and [URLHash](http://www.urlhash.com/).
 
 Powered by these programs to create a torrent file.
-* [mktorrent](https://github.com/Rudde/mktorrent)
+* [mktorrent](https://github.com/pobrn/mktorrent)
 * [py3createtorrent](https://github.com/rsnitsch/py3createtorrent)
 * [torrenttools](https://github.com/fbdtemme/torrenttools)
 
