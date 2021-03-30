@@ -14,6 +14,13 @@ Convert direct HTTP link to .torrent
 
 Your file is then burned into a torrent.
 
+Torrents created are trackerless, relying on Distributed Hash Table and Peer EXchange, to help reduce the burden of torrent trackers.
+
+For people that have unstable internet.\
+Can be paused because it is a torrent.\
+Utilizes the power of peer to peer downloads and the client-server downloads.\
+Combines the best of both worlds (P2P and Direct HTTP Link).
+
 ## How to use
 1. Create a repository on GitHub using this template by clicking "Use this template."
 2. Choose a program to use. Open either mktorrent.yml, py3createtorrent.yml, or torrenttools.yml file on the .github/workflows folder.
