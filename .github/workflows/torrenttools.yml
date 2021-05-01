@@ -11,7 +11,7 @@ env:
   file_name: "Firefox Setup 88.0.exe"
   piece_size: auto # auto for automatic calculation, or use the recommended piece size on the README.md file
   protocol_version: 1 # BitTorrent version 1, 2, or hybrid
-  maximize_disk_space: true
+  maximize_disk_space: false # Set to true if out of disk space
   
 jobs:
   create:
@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: Maximize disk space
         if: ${{ env.maximize_disk_space == 'true' }}
-        uses: easimon/maximize-build-space@master
+        uses: easimon/maximize-build-space@v4
         with:
           remove-dotnet: 'true'
           remove-android: 'true'
@@ -35,7 +35,7 @@ jobs:
         run: wget -nv -O "$file_name" "$url"
         
       - name: Create torrent using torrenttools
-        run: torrenttools create -v $protocol_version -o "${name}.torrent" -w "$url" -c "$comment" -l $piece_size "$file_name" # Tested on v0.3.2
+        run: torrenttools create -v $protocol_version -o "${name}.torrent" -w "$url" -c "$comment" -l $piece_size "$file_name" # Tested on v0.4.1
         
       - name: Upload torrent file
         uses: actions/upload-artifact@v2

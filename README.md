@@ -56,5 +56,8 @@ Combines the best of both worlds (P2P and Direct HTTP Link).
 
 Source: [Seedboxes.cc](https://community.seedboxes.cc/articles/how-to-create-a-torrent-via-the-command-line)
 
+## Increase disk space
+GitHub Actions has a soft limit of ≈25 GB, to increase disk space to ≈64 GB, set maximize disk space to true.
+
 ## Difference on Google Colaboratory version
-This GitHub Actions version of this program has a soft limit of ≈25 GB, the [Google Colaboratory](https://github.com/AnimMouse/torrent-webseed-creator-colab) version has a soft limit of ≈100 GB.
+This GitHub Actions version of this program has a soft limit of ≈25 GB (or ≈64 GB), the [Google Colaboratory](https://github.com/AnimMouse/torrent-webseed-creator-colab) version has a soft limit of ≈100 GB.

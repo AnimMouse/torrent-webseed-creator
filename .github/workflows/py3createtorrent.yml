@@ -10,7 +10,7 @@ env:
   url: "https://download-installer.cdn.mozilla.net/pub/firefox/releases/88.0/win64/en-US/Firefox%20Setup%2088.0.exe"
   file_name: "Firefox Setup 88.0.exe"
   piece_size: 0 # 0 for automatic calculation, or use the recommended piece size on the README.md file
-  maximize_disk_space: true
+  maximize_disk_space: false # Set to true if out of disk space
   
 jobs:
   create:
@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: Maximize disk space
         if: ${{ env.maximize_disk_space == 'true' }}
-        uses: easimon/maximize-build-space@master
+        uses: easimon/maximize-build-space@v4
         with:
           remove-dotnet: 'true'
           remove-android: 'true'
