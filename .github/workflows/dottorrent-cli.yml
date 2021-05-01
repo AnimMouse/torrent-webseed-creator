@@ -1,0 +1,39 @@
+name: Create torrent using dottorrent-cli
+on:
+  push:
+    paths:
+      - ".github/workflows/dottorrent-cli.yml"
+      
+env:
+  name: "Firefox Setup 88.0"
+  comment: "Firefox Setup 88.0 win64 by torrent-webseed-creator"
+  url: "https://download-installer.cdn.mozilla.net/pub/firefox/releases/88.0/win64/en-US/Firefox%20Setup%2088.0.exe"
+  file_name: "Firefox Setup 88.0.exe"
+  maximize_disk_space: false # Set to true if out of disk space
+  
+jobs:
+  create:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Maximize disk space
+        if: ${{ env.maximize_disk_space == 'true' }}
+        uses: easimon/maximize-build-space@v4
+        with:
+          remove-dotnet: 'true'
+          remove-android: 'true'
+          remove-haskell: 'true'
+          
+      - name: Install dottorrent-cli
+        run: sudo pip3 install dottorrent-cli
+        
+      - name: Download file
+        run: aria2c -x 16 -o "$file_name" "$url"
+        
+      - name: Create torrent using dottorrent-cli
+        run: dottorrent --web_seed "$url" --comment "$comment" "$file_name" "${name}.torrent"
+        
+      - name: Upload torrent file
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ env.name }}
+          path: ${{ env.name }}.torrent

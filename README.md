@@ -8,6 +8,7 @@ Powered by these programs to create a torrent file.
 * [py3createtorrent](https://github.com/rsnitsch/py3createtorrent)
 * [torrenttools](https://github.com/fbdtemme/torrenttools)
 * [torf-cli](https://github.com/rndusr/torf-cli)
+* [dottorrent-cli](https://github.com/kz26/dottorrent-cli)
 
 An alternative to BurnBit and URLHash.
 
