@@ -32,7 +32,7 @@ jobs:
           sudo apt-get install torrenttools
           
       - name: Download file
-        run: wget -nv -O "$file_name" "$url"
+        run: aria2c -x 16 -o "$file_name" "$url"
         
       - name: Create torrent using torrenttools
         run: torrenttools create -v $protocol_version -o "${name}.torrent" -w "$url" -c "$comment" -l $piece_size "$file_name" # Tested on v0.4.1
