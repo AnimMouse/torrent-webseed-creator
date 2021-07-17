@@ -7,11 +7,11 @@ on:
         required: true
         default: "Firefox Setup 90.0"
       comment:
-        description: "Comment inside of the torrent file"
+        description: "Comment"
         required: true
         default: "Firefox Setup 90.0 win64 en-US by torrent-webseed-creator"
       url:
-        description: "URL of the file"
+        description: "URL"
         required: true
         default: "https://download-installer.cdn.mozilla.net/pub/firefox/releases/90.0/win64/en-US/Firefox%20Setup%2090.0.exe"
       file_name:
@@ -19,15 +19,15 @@ on:
         required: true
         default: "Firefox Setup 90.0.exe"
       piece_size:
-        description: "Use auto for automatic calculation, or use the recommended piece size on the README.md file"
+        description: "Piece Size. Use auto for automatic calculation, or use the recommended piece size on the README.md file"
         required: true
         default: "auto"
       protocol_version:
-        description: "BitTorrent version 1, 2, or hybrid"
+        description: "BitTorrent Protocol version 1, 2, or hybrid"
         required: true
         default: "1"
       maximize_disk_space:
-        description: "Set to true if getting out of disk space error"
+        description: "Maximize disk space. Set to true if getting out of disk space error"
         required: true
         default: "false"
         
@@ -50,10 +50,10 @@ jobs:
           sudo apt-get install torrenttools
           
       - name: Download file
-        run: aria2c -x 16 -o "${{ github.event.inputs.file_name }}" "${{ url }}"
+        run: aria2c -x 16 -o "${{ github.event.inputs.file_name }}" "${{ github.event.inputs.url }}"
         
       - name: Create torrent using torrenttools
-        run: torrenttools create -v "${{ github.event.protocol_version }}" -o "${{ github.event.inputs.name }}.torrent" -w "${{ github.event.inputs.url }}" -c "${{ github.event.inputs.comment }}" -l "${{ github.event.inputs.piece_size }}" -s "torrent-webseed-creator" "${{ github.event.inputs.file_name }}" # Tested on v0.4.1
+        run: torrenttools create -v "${{ github.event.inputs.protocol_version }}" -o "${{ github.event.inputs.name }}.torrent" -w "${{ github.event.inputs.url }}" -c "${{ github.event.inputs.comment }}" -l "${{ github.event.inputs.piece_size }}" -s "torrent-webseed-creator" "${{ github.event.inputs.file_name }}" # Tested on v0.4.1
         
       - name: Upload torrent file
         uses: actions/upload-artifact@v2
