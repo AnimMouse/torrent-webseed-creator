@@ -4,9 +4,9 @@ Webseeded Torrent Creator using GitHub Actions.
 Inspired by [BurnBit †](https://web.archive.org/web/20160304022643/http://burnbit.com/) and [URLHash](http://www.urlhash.com/).
 
 Powered by these programs to create a torrent file.
+* [torrenttools](https://github.com/fbdtemme/torrenttools)
 * [mktorrent](https://github.com/pobrn/mktorrent)
 * [py3createtorrent](https://github.com/rsnitsch/py3createtorrent)
-* [torrenttools](https://github.com/fbdtemme/torrenttools)
 * [torf-cli](https://github.com/rndusr/torf-cli)
 * [dottorrent-cli](https://github.com/kz26/dottorrent-cli)
 
@@ -25,8 +25,10 @@ Combines the best of both worlds (P2P and Direct HTTP Link).
 
 ## How to use
 1. Create a repository on GitHub using this template by clicking "Use this template."
-2. Choose a program to use. Open either mktorrent.yml, py3createtorrent.yml, or torrenttools.yml file on the .github/workflows folder.
-3. Edit the environment variables inside the yaml file.
+2. Go to the Actions tab.
+3. Choose a program to use by clicking the name of the program under "all workflows." [Comparison of torrent creators](https://github.com/AnimMouse/torrent-webseed-creator/wiki/Comparison-of-torrent-creators)
+4. Besides the "This workflow has a workflow_dispatch event trigger.", click "Run workflow."
+4. Input the required information at the dropdown box. (Example inputs are predefined.)
    * Name: The name of the torrent file.
    * Comment: The comment inside the torrent file.
    * URL: The URL of the file to download and create a torrent from.
@@ -35,10 +37,11 @@ Combines the best of both worlds (P2P and Direct HTTP Link).
      * For mktorrent: The size of the torrent pieces in potency of 2 (2^n).
      * For py3createtorrent: The size of the torrent pieces in kilobyte (KB) or 0 for automatic calculation.
      * For torrenttools: The size of the torrent pieces in potency of 2 (2^n) or in kilobyte (KB) or auto for automatic calculation.
+	 * For torf-cli & dottorrent-cli: The piece size is set automatically.
    * Protocol Version: The version of BitTorrent protocol to use. Either [v1](https://www.bittorrent.org/beps/bep_0003.html), [v2, or hybrid](https://www.bittorrent.org/beps/bep_0052.html) (For torrenttools only).
-4. Push it/commit it to your repository.
+5. Click "Run workflow" at the bottom of the dropdown box.
 5. Wait for it to finish downloading and hashing.
-6. After it says passing on the GitHub Actions, download the torrent file on Artifacts.
+6. After it says passing on the GitHub Actions, click the workflow run that has been created and download the torrent file on Artifacts.
 
 ## URL requirements
 1. URL must be accessible without cookies. [Source](http://www.urlhash.com/)
