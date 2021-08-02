@@ -1,4 +1,4 @@
-name: torrenttools
+name: py3createtorrent
 on:
   workflow_dispatch:
     inputs:
@@ -19,13 +19,9 @@ on:
         required: true
         default: "Firefox Setup 90.0.2.exe"
       piece_size:
-        description: "Piece Size. Use auto for automatic calculation, or use the recommended piece size on the README.md file"
+        description: "Piece Size. Use 0 for automatic calculation, or use the recommended piece size on the README.md file"
         required: true
-        default: "auto"
-      protocol_version:
-        description: "BitTorrent Protocol version 1, 2, or hybrid"
-        required: true
-        default: "1"
+        default: "0"
       maximize_disk_space:
         description: "Maximize disk space. Set to true if getting out of disk space error"
         required: true
@@ -43,17 +39,14 @@ jobs:
           remove-android: 'true'
           remove-haskell: 'true'
           
-      - name: Install torrenttools
-        run: |
-          sudo add-apt-repository ppa:fbdtemme/torrenttools
-          sudo apt-get update
-          sudo apt-get install torrenttools
-          
+      - name: Install py3createtorrent
+        run: sudo pip3 install py3createtorrent
+        
       - name: Download file
         run: aria2c -x 16 -o "${{ github.event.inputs.file_name }}" "${{ github.event.inputs.url }}"
         
-      - name: Create torrent using torrenttools
-        run: torrenttools create -v "${{ github.event.inputs.protocol_version }}" -o "${{ github.event.inputs.name }}.torrent" -w "${{ github.event.inputs.url }}" -c "${{ github.event.inputs.comment }}" -l "${{ github.event.inputs.piece_size }}" -s "torrent-webseed-creator" "${{ github.event.inputs.file_name }}"
+      - name: Create torrent using py3createtorrent
+        run: py3createtorrent -p "${{ github.event.inputs.piece_size }}" -c "${{ github.event.inputs.comment }}" -s "torrent-webseed-creator" -o "${{ github.event.inputs.name }}.torrent" --webseed "${{ github.event.inputs.url }}" "${{ github.event.inputs.file_name }}"
         
       - name: Upload torrent file
         uses: actions/upload-artifact@v2
