@@ -1,0 +1,9 @@
+Piece Size,mktorrent,py3createtorrent,torrenttools,torf-cli,dottorrent-cli,for filesizes
+Automatic,No support yet,0,auto,Leave blank,Leave blank,Any
+512 KiB,19,512,19 or 512K,0.5,512K,512 MiB - 1024 MiB
+1024 KiB,20,1024,20 or 1024K,1,1M,1 GiB - 2 GiB
+2048 KiB,21,2048,21 or 2048K,2,2M,2 GiB - 4 GiB
+4096 KiB,22,4096,22 or 4096K,4,4M,4 GiB - 8 GiB
+8192 KiB,23,8192,23 or  8192K,8,8M,8 GiB - 16 GiB
+16384 KiB,24,16384,24 or 16384K,16,16M,16 GiB - 512 GiB
+32768 KiB,25,32768,25 or 32768K,32,32M,>512 GiB
