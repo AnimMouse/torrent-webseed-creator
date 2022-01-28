@@ -28,7 +28,7 @@ jobs:
     steps:
       - name: Maximize disk space
         if: github.event.inputs.maximize_disk_space == 'true'
-        uses: easimon/maximize-build-space@v4
+        uses: easimon/maximize-build-space@v5
         with:
           remove-dotnet: true
           remove-android: true
