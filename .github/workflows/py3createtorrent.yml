@@ -48,7 +48,7 @@ jobs:
         run: py3createtorrent -p "${{ github.event.inputs.piece_size }}" -c "${{ github.event.inputs.comment }}" -s "torrent-webseed-creator" -o "${{ github.event.inputs.name }}.torrent" --webseed "${{ github.event.inputs.url }}" "${{ github.event.inputs.file_name }}"
         
       - name: Upload torrent file
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: ${{ github.event.inputs.name }}
           path: ${{ github.event.inputs.name }}.torrent
