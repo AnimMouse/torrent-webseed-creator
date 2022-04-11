@@ -55,7 +55,7 @@ jobs:
         run: torrenttools create -v "${{ github.event.inputs.protocol_version }}" -o "${{ github.event.inputs.name }}.torrent" -w "${{ github.event.inputs.url }}" -c "${{ github.event.inputs.comment }}" -l "${{ github.event.inputs.piece_size }}" -s "torrent-webseed-creator" "${{ github.event.inputs.file_name }}"
         
       - name: Upload torrent file
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: ${{ github.event.inputs.name }}
           path: ${{ github.event.inputs.name }}.torrent
