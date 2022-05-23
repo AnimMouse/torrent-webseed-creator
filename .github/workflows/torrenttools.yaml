@@ -1,27 +1,31 @@
-name: mktorrent
+name: torrenttools
 on:
   workflow_dispatch:
     inputs:
       name:
         description: Name of the torrent file
         required: true
-        default: Firefox Setup 95.0.1
+        default: Firefox Setup 100.0
       comment:
         description: Comment
         required: true
-        default: Firefox Setup 95.0.1 win64 en-US by torrent-webseed-creator
+        default: Firefox Setup 100.0 win64 en-US by torrent-webseed-creator
       url:
         description: URL of the file
         required: true
-        default: 'https://download-installer.cdn.mozilla.net/pub/firefox/releases/95.0.1/win64/en-US/Firefox%20Setup%2095.0.1.exe'
+        default: 'https://download-installer.cdn.mozilla.net/pub/firefox/releases/100.0/win64/en-US/Firefox%20Setup%20100.0.exe'
       file_name:
         description: File name of the file in the torrent
         required: true
-        default: Firefox Setup 95.0.1.exe
+        default: Firefox Setup 100.0.exe
       piece_size:
-        description: Piece Size. Use the recommended piece size on the README.md file. mktorrent does not support automatic calculation
+        description: Piece Size. Use auto for automatic calculation, or use the recommended piece size on the README.md file
         required: true
-        default: 19
+        default: auto
+      protocol_version:
+        description: BitTorrent Protocol version 1, 2, or hybrid
+        required: true
+        default: 1
       maximize_disk_space:
         description: Maximize disk space. Set to true if getting out of disk space error
         default: false
@@ -38,14 +42,17 @@ jobs:
           remove-android: true
           remove-haskell: true
           
-      - name: Install mktorrent
-        run: sudo apt-get install mktorrent
-        
+      - name: Install torrenttools
+        run: |
+          sudo add-apt-repository ppa:fbdtemme/torrenttools
+          sudo apt-get update
+          sudo apt-get install torrenttools
+          
       - name: Download file
         run: aria2c -x 16 -o "${{ github.event.inputs.file_name }}" "${{ github.event.inputs.url }}"
         
-      - name: Create torrent using mktorrent
-        run: mktorrent -c "${{ github.event.inputs.comment }}" -l "${{ github.event.inputs.piece_size }}" -o "${{ github.event.inputs.name }}.torrent" -s "torrent-webseed-creator" -w "${{ github.event.inputs.url }}" "${{ github.event.inputs.file_name }}"
+      - name: Create torrent using torrenttools
+        run: torrenttools create -v "${{ github.event.inputs.protocol_version }}" -o "${{ github.event.inputs.name }}.torrent" -w "${{ github.event.inputs.url }}" -c "${{ github.event.inputs.comment }}" -l "${{ github.event.inputs.piece_size }}" -s "torrent-webseed-creator" "${{ github.event.inputs.file_name }}"
         
       - name: Upload torrent file
         uses: actions/upload-artifact@v3
