@@ -5,33 +5,33 @@ on:
       name:
         description: Name of the torrent file
         required: true
-        default: Firefox Setup 100.0
+        default: Firefox Setup 102.0
       comment:
         description: Comment
         required: true
-        default: Firefox Setup 100.0 win64 en-US by torrent-webseed-creator
+        default: Firefox Setup 102.0 win64 en-US by torrent-webseed-creator
       url:
         description: URL of the file
         required: true
-        default: 'https://download-installer.cdn.mozilla.net/pub/firefox/releases/100.0/win64/en-US/Firefox%20Setup%20100.0.exe'
+        default: 'https://download-installer.cdn.mozilla.net/pub/firefox/releases/102.0/win64/en-US/Firefox%20Setup%20102.0.exe'
       file_name:
         description: File name of the file in the torrent
         required: true
-        default: Firefox Setup 100.0.exe
+        default: Firefox Setup 102.0.exe
       piece_size:
         description: Piece Size. Use 0 for automatic calculation, or use the recommended piece size on the README.md file
         required: true
         default: 0
       maximize_disk_space:
-        description: Maximize disk space. Set to true if getting out of disk space error
-        default: false
+        description: Maximize disk space. Check if getting out of disk space error
+        type: boolean
         
 jobs:
   create_torrent:
     runs-on: ubuntu-latest
     steps:
       - name: Maximize disk space
-        if: github.event.inputs.maximize_disk_space == 'true'
+        if: inputs.maximize_disk_space == 'true'
         uses: easimon/maximize-build-space@v6
         with:
           remove-dotnet: true
@@ -42,13 +42,13 @@ jobs:
         run: pipx install py3createtorrent
         
       - name: Download file
-        run: aria2c -x 16 -o "${{ github.event.inputs.file_name }}" "${{ github.event.inputs.url }}"
+        run: aria2c -x 16 -o "${{ inputs.file_name }}" "${{ inputs.url }}"
         
       - name: Create torrent using py3createtorrent
-        run: py3createtorrent -p "${{ github.event.inputs.piece_size }}" -c "${{ github.event.inputs.comment }}" -s "torrent-webseed-creator" -o "${{ github.event.inputs.name }}.torrent" --webseed "${{ github.event.inputs.url }}" "${{ github.event.inputs.file_name }}"
+        run: py3createtorrent -p "${{ inputs.piece_size }}" -c "${{ inputs.comment }}" -s "torrent-webseed-creator" -o "${{ inputs.name }}.torrent" --webseed "${{ inputs.url }}" "${{ inputs.file_name }}"
         
       - name: Upload torrent file
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ github.event.inputs.name }}
-          path: ${{ github.event.inputs.name }}.torrent
+          name: ${{ inputs.name }}
+          path: ${{ inputs.name }}.torrent

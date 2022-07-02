@@ -34,9 +34,9 @@ Combines the best of both worlds (P2P and Direct HTTP Link).
    * URL: The URL of the file to download and create a torrent from.
    * File name: The file name of the file you will create a torrent from.
    * Piece size:
-     * For mktorrent: The size of the torrent pieces in potency of 2 (2^n).
+     * For mktorrent: The size of the torrent pieces in power of 2 (2^n).
      * For py3createtorrent: The size of the torrent pieces in kilobyte (KB) or 0 for automatic calculation.
-     * For torrenttools: The size of the torrent pieces in potency of 2 (2^n) or in kilobyte (KB) or auto for automatic calculation.
+     * For torrenttools: The size of the torrent pieces in power of 2 (2^n) or in kilobyte (KB) or auto for automatic calculation.
 	 * For torf-cli & dottorrent-cli: The piece size is set automatically.
    * Protocol Version: The version of BitTorrent protocol to use. Either [v1](https://www.bittorrent.org/beps/bep_0003.html), [v2, or hybrid](https://www.bittorrent.org/beps/bep_0052.html) (For torrenttools only).
 5. Click "Run workflow" at the bottom of the dropdown box.
@@ -62,7 +62,7 @@ Combines the best of both worlds (P2P and Direct HTTP Link).
 Source: [Seedboxes.cc](https://community.seedboxes.cc/articles/how-to-create-a-torrent-via-the-command-line)
 
 ## Increase disk space
-GitHub Actions has a soft limit of ≈25 GB, to increase disk space to ≈64 GB, set maximize disk space to true.
+GitHub Actions has a soft limit of ≈25 GB, to increase disk space to ≈64 GB, check maximize disk space.
 
 ## Difference on Google Colaboratory version
 This GitHub Actions version of this program has a soft limit of ≈25 GB (or ≈64 GB), the [Google Colaboratory](https://github.com/AnimMouse/torrent-webseed-creator-colab) version has a soft limit of ≈100 GB.
