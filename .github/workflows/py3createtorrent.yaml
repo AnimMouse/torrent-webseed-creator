@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Maximize disk space
-        if: inputs.maximize_disk_space == 'true'
+        if: inputs.maximize_disk_space
         uses: easimon/maximize-build-space@v6
         with:
           remove-dotnet: true
