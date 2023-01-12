@@ -44,10 +44,11 @@ jobs:
           remove-android: true
           remove-haskell: true
           
-      - name: Install torrenttools
-        run: |
-          sudo add-apt-repository -y ppa:fbdtemme/torrenttools
-          sudo apt-get -qq -y install torrenttools
+      - name: Setup torrenttools
+        uses: AnimMouse/setup-appimage@v1
+        with:
+          name: torrenttools
+          url: https://github.com/fbdtemme/torrenttools/releases/download/v0.6.2/torrenttools-0.6.2-linux-x86_64.AppImage
           
       - name: Download file
         run: aria2c -x 16 -o "${{ inputs.file_name }}" "${{ inputs.url }}"
