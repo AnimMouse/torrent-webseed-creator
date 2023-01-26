@@ -1,7 +1,7 @@
 # Torrent Webseed Creator
 Webseeded Torrent Creator using GitHub Actions.
 
-Inspired by [BurnBit †](https://web.archive.org/web/20160304022643/http://burnbit.com/) and [URLHash](http://www.urlhash.com/).
+Inspired by [BurnBit †](https://web.archive.org/web/20160304022643/http://burnbit.com/) and [URLHash](http://www.urlhash.com).
 
 Powered by these programs to create a torrent file.
 * [torrenttools](https://github.com/fbdtemme/torrenttools)
@@ -24,10 +24,10 @@ Utilizes the power of peer to peer downloads and the client-server downloads.\
 Combines the best of both worlds (P2P and Direct HTTP Link).
 
 ## How to use
-1. Create a repository on GitHub using this template by clicking "Use this template."
+1. Create a repository on GitHub using this template by clicking "Use this template" and then click "Create a new repository".
 2. Go to the Actions tab.
-3. Choose a program to use by clicking the name of the program under "all workflows." [Comparison of torrent creators](https://github.com/AnimMouse/torrent-webseed-creator/wiki/Comparison-of-torrent-creators)
-4. Besides the "This workflow has a workflow_dispatch event trigger.", click "Run workflow."
+3. Choose a program to use by clicking the name of the program under "All workflows". [Comparison of torrent creators](https://github.com/AnimMouse/torrent-webseed-creator/wiki/Comparison-of-torrent-creators)
+4. Besides the "This workflow has a workflow_dispatch event trigger.", click "Run workflow".
 4. Input the required information at the dropdown box. (Example inputs are predefined.)
    * Name: The name of the torrent file.
    * Comment: The comment inside the torrent file.
@@ -41,10 +41,13 @@ Combines the best of both worlds (P2P and Direct HTTP Link).
    * Protocol Version: The version of BitTorrent protocol to use. Either [v1](https://www.bittorrent.org/beps/bep_0003.html), [v2, or hybrid](https://www.bittorrent.org/beps/bep_0052.html) (For torrenttools only).
 5. Click "Run workflow" at the bottom of the dropdown box.
 5. Wait for it to finish downloading and hashing.
-6. After it says passing on the GitHub Actions, click the workflow run that has been created and download the torrent file on Artifacts.
+6. After it says passing on GitHub Actions, click the workflow run that has been created and download the torrent file on Artifacts.
+
+For a step by step instruction with screenshots, go to my [website](https://www.animmouse.com/p/how-to-use-torrent-webseed-creator/).\
+You can also commission me on [Ko-fi](https://ko-fi.com/animmouse/commissions) so I'll do the work for you.
 
 ## URL requirements
-1. URL must be accessible without cookies. [Source](http://www.urlhash.com/)
+1. URL must be accessible without cookies. [Source](http://www.urlhash.com)
 2. The URL should not expire, or it will stop working sometime if there is not enough seeders. [Source](https://web.archive.org/web/20160310075751/http://burnbit.com/faq#httpseeds)
 
 ## Recommend piece size
