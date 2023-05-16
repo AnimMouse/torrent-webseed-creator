@@ -2,8 +2,8 @@ name: torrenttools
 on:
   workflow_dispatch:
     inputs:
-      name:
-        description: Name of the torrent file
+      name: 
+        description: test
         required: true
         default: Firefox Setup 102.0
       comment:
@@ -13,7 +13,7 @@ on:
       url:
         description: URL of the file
         required: true
-        default: 'https://download-installer.cdn.mozilla.net/pub/firefox/releases/102.0/win64/en-US/Firefox%20Setup%20102.0.exe'
+        default: 'https://dl3.downloadly.ir/Files/Elearning/Udemy_70-461_761_Querying_Microsoft_SQL_Server_with_Transact-SQL_2020-11.part4_Downloadly.ir.rar'
       file_name:
         description: File name of the file in the torrent
         required: true
@@ -25,7 +25,7 @@ on:
       protocol_version:
         description: BitTorrent Protocol version 1, 2, or hybrid
         required: true
-        default: 1
+        default: hybrid
         type: choice
         options: [1, 2, hybrid]
       maximize_disk_space:
