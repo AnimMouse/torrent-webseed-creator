@@ -32,7 +32,7 @@ jobs:
     steps:
       - name: Maximize disk space
         if: inputs.maximize_disk_space
-        uses: easimon/maximize-build-space@v7
+        uses: easimon/maximize-build-space@v8
         with:
           remove-dotnet: true
           remove-android: true
