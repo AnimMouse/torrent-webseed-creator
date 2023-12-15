@@ -48,7 +48,7 @@ jobs:
         run: mktorrent -c "${{ inputs.comment }}" -l "${{ inputs.piece_size }}" -o "${{ inputs.name }}.torrent" -s "torrent-webseed-creator" -w "${{ inputs.url }}" "${{ inputs.file_name }}"
         
       - name: Upload torrent file
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.name }}
           path: ${{ inputs.name }}.torrent

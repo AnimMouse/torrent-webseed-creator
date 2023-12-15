@@ -44,7 +44,7 @@ jobs:
         run: torf "${{ inputs.file_name }}" -o "${{ inputs.name }}.torrent" -w "${{ inputs.url }}" -c "${{ inputs.comment }}" -s "torrent-webseed-creator"
         
       - name: Upload torrent file
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.name }}
           path: ${{ inputs.name }}.torrent

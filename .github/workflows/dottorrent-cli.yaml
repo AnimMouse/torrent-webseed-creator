@@ -44,7 +44,7 @@ jobs:
         run: dottorrent --web_seed "${{ inputs.url }}" --source "torrent-webseed-creator" --comment "${{ inputs.comment }}" "${{ inputs.file_name }}" "${{ inputs.name }}.torrent"
         
       - name: Upload torrent file
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ inputs.name }}
           path: ${{ inputs.name }}.torrent
