@@ -46,11 +46,11 @@ Combines the best of both worlds (P2P and Direct HTTP Link).
 For a step by step instruction with screenshots, go to my [website](https://www.animmouse.com/p/how-to-use-torrent-webseed-creator/).\
 You can also commission me on [Ko-fi](https://ko-fi.com/animmouse/commissions) so I'll do the work for you.
 
-## URL requirements
+### URL requirements
 1. URL must be accessible without cookies. [Source](http://www.urlhash.com)
 2. The URL should not expire, or it will stop working sometime if there is not enough seeders. [Source](https://web.archive.org/web/20160310075751/http://burnbit.com/faq#httpseeds)
 
-## Recommend piece size
+### Recommend piece size
 | Piece Size | mktorrent      | py3createtorrent | torrenttools | for filesizes      |
 |------------|----------------|------------------|--------------|--------------------|
 | Automatic  | No support yet | 0                | auto         | Any                |
@@ -64,8 +64,10 @@ You can also commission me on [Ko-fi](https://ko-fi.com/animmouse/commissions) s
 
 Source: [Seedboxes.cc](https://community.seedboxes.cc/articles/how-to-create-a-torrent-via-the-command-line)
 
-## Increase disk space
-GitHub Actions has a soft limit of ≈25 GB, to increase disk space to ≈64 GB, check maximize disk space.
+### File size limit
+As of 2024-02-27
+* Default: ≈20 GB
+* Maximize disk space: ≈101 GB
 
-## Difference on Google Colaboratory version
-This GitHub Actions version of this program has a soft limit of ≈25 GB (or ≈64 GB), the [Google Colaboratory](https://github.com/AnimMouse/torrent-webseed-creator-colab) version has a soft limit of ≈100 GB.
+#### Alternatives
+1. [Torrent Webseed Creator on Colab](https://github.com/AnimMouse/torrent-webseed-creator-colab)
