@@ -1,0 +1,24 @@
+name: Remove Dependabot on template
+on:
+  create:
+  
+concurrency:
+  group: ${{ github.workflow }}
+  
+jobs:
+  remove:
+    permissions:
+      contents: write
+    if: github.run_number == 1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Remove Dependabot
+        run: rm -f .github/dependabot.yaml
+        
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Remove Dependabot
