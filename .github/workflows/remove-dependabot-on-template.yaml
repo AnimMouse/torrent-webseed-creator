@@ -9,7 +9,7 @@ jobs:
   remove:
     permissions:
       contents: write
-    if: github.run_number == 1
+    if: github.run_number == 1 && github.actor != 'dependabot[bot]'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
